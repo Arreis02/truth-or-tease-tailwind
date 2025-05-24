@@ -1,3 +1,5 @@
+<span className={\`transition-all duration-300 \${flash ? 'bg-white text-black rounded-full px-2' : ''}\`}>
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -43,8 +45,7 @@ function Timer({ resetTrigger }) {
   const seconds = secondsLeft % 60;
 
   return (
-    <span className={`transition-all duration-300 ${flash ? 'bg-white text-black rounded-full px-2' : ''}`}>
-
+    <span className={\`transition-all duration-300 \${flash ? 'bg-white text-black rounded-full px-2' : ''}\`}>
       {minutes}:{seconds.toString().padStart(2, '0')}
     </span>
   );
