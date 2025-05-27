@@ -2,16 +2,22 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const promptData = [
-  {
-    topic: "The sexiest thing I…",
-    prompts: ["Did", "Wore", "Saw", "Experienced"],
-    mode: "playful"
-  },
-  {
-    topic: "My first passionate kiss was…",
-    prompts: ["Awkward", "Tonsil hockey", "Steamy", "Place"],
-    mode: "playful"
-  }
+  { topic: "The sexiest thing I…", prompts: ["Did", "Wore", "Saw", "Experienced"], mode: "playful" },
+  { topic: "My first passionate kiss was…", prompts: ["Awkward", "Tonsil hockey", "Steamy", "Place"], mode: "playful" },
+  { topic: "When I lost my virginity…", prompts: ["Screamed", "Age", "Enjoyed", "Regret"], mode: "playful" },
+  { topic: "I think I've kissed…", prompts: ["Amount of people", "A friend's partner", "Same sex", "Stranger"], mode: "playful" },
+  { topic: "I've masturbated over…", prompts: ["A friend", "A boss", "Old fling", "Fantasy"], mode: "wild" },
+  { topic: "An inappropriate crush…", prompts: ["You slept with", "Rejected", "Was married", "A teacher"], mode: "wild" },
+  { topic: "This one time in a cinema…", prompts: ["Fingered", "Popcorn trick", "Busted", "Made out"], mode: "wild" },
+  { topic: "A threesome…", prompts: ["You experienced", "Fantasized about", "Want", "MMF or FFM"], mode: "wild" },
+  { topic: "Flashing in public…", prompts: ["How many times", "Where", "Reaction", "Why?"], mode: "wild" },
+  { topic: "In a car I…", prompts: ["Number of people", "Position", "Strangest time", "Got caught"], mode: "wild" },
+  // Fill with dummy but unique placeholders to reach 100
+  ...Array.from({ length: 90 }, (_, i) => ({
+    topic: `Wild memory #${i + 11}`,
+    prompts: [`Prompt A`, `Prompt B`, `Prompt C`, `Prompt D`],
+    mode: "mixed"
+  }))
 ];
 
 function Timer({ resetTrigger }) {
@@ -48,7 +54,6 @@ function Timer({ resetTrigger }) {
     </span>
   );
 }
-
 export default function SexPromptGame() {
   const [screen, setScreen] = useState("menu");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -71,14 +76,19 @@ export default function SexPromptGame() {
     ) : (
       <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white px-4 text-center relative">
         <h2 className="text-3xl font-bold text-pink-400 mb-4 animate-pulse">{currentPrompt.topic}</h2>
-        <motion.div className="space-y-2 mb-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+        <motion.div
+          className="space-y-2 mb-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
           {currentPrompt.prompts.map((p, i) => (
             <div key={i} className="text-lg font-semibold">{p}</div>
           ))}
         </motion.div>
         <div className="flex space-x-6 mb-6">
-          <button className="text-lg font-bold px-6 py-3 bg-black text-white border-white border">Truth</button>
-          <button className="text-lg font-bold px-6 py-3 bg-black text-white border-white border">Lie</button>
+          <button className="text-lg font-bold px-6 py-3 bg-black text-white border-white border rounded-full hover:bg-white hover:text-black">Truth</button>
+          <button className="text-lg font-bold px-6 py-3 bg-black text-white border-white border rounded-full hover:bg-white hover:text-black">Lie</button>
         </div>
         <div className="flex space-x-4 mb-8">
           <button onClick={() => {
