@@ -2,507 +2,111 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const promptData = [
-  {
-    topic: "The sexiest thing I…",
-    prompts: ["Did", "Wore", "Saw", "Experienced"],
-    mode: "wild"
-  },
-  {
-    topic: "My first passionate kiss was…",
-    prompts: ["Awkward", "Tonsil hockey", "Steamy", "Place"],
-    mode: "wild"
-  },
-  {
-    topic: "When I lost my virginity…",
-    prompts: ["Screamed", "Age", "Enjoyed", "Regret"],
-    mode: "wild"
-  },
-  {
-    topic: "I think I've kissed…",
-    prompts: ["Amount of people", "A friend's partner", "Same sex", "Stranger"],
-    mode: "wild"
-  },
-  {
-    topic: "I've masturbated over…",
-    prompts: ["A friend", "A boss", "Old fling", "Fantasy"],
-    mode: "wild"
-  },
-  {
-    topic: "I was so embarrassed when…",
-    prompts: ["Premature", "Too small", "Fell asleep", "Weird noise"],
-    mode: "wild"
-  },
-  {
-    topic: "An inappropriate crush…",
-    prompts: ["You slept with", "Rejected", "Found irresistible", "Forbidden"],
-    mode: "wild"
-  },
-  {
-    topic: "I gave/received a handjob…",
-    prompts: ["Strangest place", "While driving", "Random person", "Teenage years"],
-    mode: "wild"
-  },
-  {
-    topic: "This one time in a cinema…",
-    prompts: ["Fingered", "Popcorn trick", "Made out", "Caught"],
-    mode: "wild"
-  },
-  {
-    topic: "The shower…",
-    prompts: ["Exciting", "Best experience", "Slippery mishap", "Golden moment"],
-    mode: "wild"
-  },
-  {
-    topic: "Flashing in public…",
-    prompts: ["How many times", "Where", "Who saw", "Funniest reaction"],
-    mode: "wild"
-  },
-  {
-    topic: "A threesome…",
-    prompts: ["Experienced", "Fantasized", "Want to try", "MMF or FFM"],
-    mode: "wild"
-  },
-  {
-    topic: "An orgasm I…",
-    prompts: ["Screamed", "Can't forget", "Squirted", "Massive load"],
-    mode: "wild"
-  },
-  {
-    topic: "A porno I…",
-    prompts: ["Created", "Watched with someone", "Copied", "Favourite category"],
-    mode: "wild"
-  },
-  {
-    topic: "The worst sex was…",
-    prompts: ["Boring", "Too rough", "No chemistry", "Never came"],
-    mode: "wild"
-  },
-  {
-    topic: "There was one friend I…",
-    prompts: ["Had a close call", "Fell for", "Slept with once", "Still think about"],
-    mode: "wild"
-  },
-  {
-    topic: "I didn’t tell you about…",
-    prompts: ["A sexual experience", "A fantasy", "A kink", "Someone I met"],
-    mode: "wild"
-  },
-  {
-    topic: "This one time in bed…",
-    prompts: ["Funny", "Scary", "Awkward", "Weird"],
-    mode: "wild"
-  },
-  {
-    topic: "The dirtiest thing in bed was…",
-    prompts: ["A request", "A phrase", "A position", "A toy"],
-    mode: "wild"
-  },
-  {
-    topic: "I got so turned on when…",
-    prompts: ["They said something", "An old memory", "The position", "Porn fantasy came true"],
-    mode: "wild"
-  },
-  {
-    topic: "Same-sex experience…",
-    prompts: ["Most adventurous", "Fantasized", "Tried once", "Want to try"],
-    mode: "wild"
-  },
-  {
-    topic: "The first blowjob I…",
-    prompts: ["Gave", "Received", "Expected", "Felt"],
-    mode: "wild"
-  },
-  {
-    topic: "Sexting…",
-    prompts: ["Made me cum", "To how many?", "Turned on the most", "Regretted"],
-    mode: "wild"
-  },
-  {
-    topic: "I’ve tried imitating…",
-    prompts: ["A porn", "A book", "A memory", "A partner"],
-    mode: "wild"
-  },
-  {
-    topic: "In a car I…",
-    prompts: ["Wildest position", "Oral happened", "Strangest time", "More than once"],
-    mode: "wild"
-  },
-  {
-    topic: "A story about tits…",
-    prompts: ["Pearl necklace", "Biggest turn on", "Strangest place", "Felt jealous"],
-    mode: "wild"
-  },
-  {
-    topic: "The wildest position…",
-    prompts: ["Tried", "Requested", "Made up", "Regretted"],
-    mode: "wild"
-  },
-  {
-    topic: "Rough sex…",
-    prompts: ["Memorable", "Turn on", "Slap or choke", "Caught me off guard"],
-    mode: "wild"
-  },
-  {
-    topic: "No one has ever known…",
-    prompts: ["One night stand", "A fantasy", "A fetish", "A kink"],
-    mode: "wild"
-  },
-  {
-    topic: "Used a household item to…",
-    prompts: ["Masturbate", "During sex", "Satisfy someone", "Feel curious"],
-    mode: "wild"
-  },
-  {
-    topic: "The morning after pill…",
-    prompts: ["How many times", "Specific event", "Scared me", "Not used when should have"],
-    mode: "wild"
-  },
-  {
-    topic: "Up the ass…",
-    prompts: ["Enjoyed", "Finger only", "Toy", "How many times"],
-    mode: "wild"
-  },
-  {
-    topic: "I secretly like…",
-    prompts: ["Fetish", "Person", "Position", "Toy"],
-    mode: "wild"
-  },
-  {
-    topic: "A kink that I…",
-    prompts: ["Participated in", "Want to try", "Loved", "Was surprised by"],
-    mode: "wild"
-  },
-  {
-    topic: "I was caught…",
-    prompts: ["By parents", "Having sex", "Masturbating", "In public"],
-    mode: "wild"
-  },
-  {
-    topic: "Age is just a number…",
-    prompts: ["Youngest", "Oldest", "Regret", "Made nervous"],
-    mode: "wild"
-  },
-  {
-    topic: "I was dared to…",
-    prompts: ["Flash", "Touch someone", "Kiss someone", "Get naked"],
-    mode: "wild"
-  },
-  {
-    topic: "A perfect stranger…",
-    prompts: ["Had sex with", "Was attracted to", "Gave head", "Met online"],
-    mode: "wild"
-  },
-  {
-    topic: "The most terrible…",
-    prompts: ["Sex", "Position", "Partner", "Oral experience"],
-    mode: "wild"
-  },
-  {
-    topic: "The first person to ever…",
-    prompts: ["Give me oral", "Make me squirt", "Use toys", "Try anal"],
-    mode: "wild"
-  },
-  {
-    topic: "I told a lie…",
-    prompts: ["In bed", "About an orgasm", "To a lover", "To protect someone"],
-    mode: "wild"
-  },
-  {
-    topic: "Flashing in public…",
-    prompts: ["How many times", "Where", "Who saw", "Funniest reaction"],
-    mode: "wild"
-  },
-  {
-    topic: "A threesome…",
-    prompts: ["Experienced", "Fantasized", "Want to try", "MMF or FFM"],
-    mode: "wild"
-  },
-  {
-    topic: "An orgasm I…",
-    prompts: ["Screamed", "Can't forget", "Squirted", "Massive load"],
-    mode: "wild"
-  },
-  {
-    topic: "A porno I…",
-    prompts: ["Created", "Watched with someone", "Copied", "Favourite category"],
-    mode: "wild"
-  },
-  {
-    topic: "The worst sex was…",
-    prompts: ["Boring", "Too rough", "No chemistry", "Never came"],
-    mode: "wild"
-  },
-  {
-    topic: "There was one friend I…",
-    prompts: ["Had a close call", "Fell for", "Slept with once", "Still think about"],
-    mode: "wild"
-  },
-  {
-    topic: "I didn’t tell you about…",
-    prompts: ["A sexual experience", "A fantasy", "A kink", "Someone I met"],
-    mode: "wild"
-  },
-  {
-    topic: "This one time in bed…",
-    prompts: ["Funny", "Scary", "Awkward", "Weird"],
-    mode: "wild"
-  },
-  {
-    topic: "The dirtiest thing in bed was…",
-    prompts: ["A request", "A phrase", "A position", "A toy"],
-    mode: "wild"
-  },
-  {
-    topic: "I got so turned on when…",
-    prompts: ["They said something", "An old memory", "The position", "Porn fantasy came true"],
-    mode: "wild"
-  },
-  {
-    topic: "Same-sex experience…",
-    prompts: ["Most adventurous", "Fantasized", "Tried once", "Want to try"],
-    mode: "wild"
-  },
-  {
-    topic: "The first blowjob I…",
-    prompts: ["Gave", "Received", "Expected", "Felt"],
-    mode: "wild"
-  },
-  {
-    topic: "Sexting…",
-    prompts: ["Made me cum", "To how many?", "Turned on the most", "Regretted"],
-    mode: "wild"
-  },
-  {
-    topic: "I’ve tried imitating…",
-    prompts: ["A porn", "A book", "A memory", "A partner"],
-    mode: "wild"
-  },
-  {
-    topic: "In a car I…",
-    prompts: ["Wildest position", "Oral happened", "Strangest time", "More than once"],
-    mode: "wild"
-  },
-  {
-    topic: "A story about tits…",
-    prompts: ["Pearl necklace", "Biggest turn on", "Strangest place", "Felt jealous"],
-    mode: "wild"
-  },
-  {
-    topic: "The wildest position…",
-    prompts: ["Tried", "Requested", "Made up", "Regretted"],
-    mode: "wild"
-  },
-  {
-    topic: "Rough sex…",
-    prompts: ["Memorable", "Turn on", "Slap or choke", "Caught me off guard"],
-    mode: "wild"
-  },
-  {
-    topic: "No one has ever known…",
-    prompts: ["One night stand", "A fantasy", "A fetish", "A kink"],
-    mode: "wild"
-  },
-  {
-    topic: "Used a household item to…",
-    prompts: ["Masturbate", "During sex", "Satisfy someone", "Feel curious"],
-    mode: "wild"
-  },
-  {
-    topic: "The morning after pill…",
-    prompts: ["How many times", "Specific event", "Scared me", "Not used when should have"],
-    mode: "wild"
-  },
-  {
-    topic: "Up the ass…",
-    prompts: ["Enjoyed", "Finger only", "Toy", "How many times"],
-    mode: "wild"
-  },
-  {
-    topic: "I secretly like…",
-    prompts: ["Fetish", "Person", "Position", "Toy"],
-    mode: "wild"
-  },
-  {
-    topic: "A kink that I…",
-    prompts: ["Participated in", "Want to try", "Loved", "Was surprised by"],
-    mode: "wild"
-  },
-  {
-    topic: "I was caught…",
-    prompts: ["By parents", "Having sex", "Masturbating", "In public"],
-    mode: "wild"
-  },
-  {
-    topic: "Age is just a number…",
-    prompts: ["Youngest", "Oldest", "Regret", "Made nervous"],
-    mode: "wild"
-  },
-  {
-    topic: "I was dared to…",
-    prompts: ["Flash", "Touch someone", "Kiss someone", "Get naked"],
-    mode: "wild"
-  },
-  {
-    topic: "A perfect stranger…",
-    prompts: ["Had sex with", "Was attracted to", "Gave head", "Met online"],
-    mode: "wild"
-  },
-  {
-    topic: "The most terrible…",
-    prompts: ["Sex", "Position", "Partner", "Oral experience"],
-    mode: "wild"
-  },
-  {
-    topic: "The first person to ever…",
-    prompts: ["Give me oral", "Make me squirt", "Use toys", "Try anal"],
-    mode: "wild"
-  },
-  {
-    topic: "I told a lie…",
-    prompts: ["In bed", "About an orgasm", "To a lover", "To protect someone"],
-    mode: "wild"
-  },
-  {
-    topic: "Flashing in public…",
-    prompts: ["How many times", "Where", "Who saw", "Funniest reaction"],
-    mode: "wild"
-  },
-  {
-    topic: "A threesome…",
-    prompts: ["Experienced", "Fantasized", "Want to try", "MMF or FFM"],
-    mode: "wild"
-  },
-  {
-    topic: "An orgasm I…",
-    prompts: ["Screamed", "Can't forget", "Squirted", "Massive load"],
-    mode: "wild"
-  },
-  {
-    topic: "A porno I…",
-    prompts: ["Created", "Watched with someone", "Copied", "Favourite category"],
-    mode: "wild"
-  },
-  {
-    topic: "The worst sex was…",
-    prompts: ["Boring", "Too rough", "No chemistry", "Never came"],
-    mode: "wild"
-  },
-  {
-    topic: "There was one friend I…",
-    prompts: ["Had a close call", "Fell for", "Slept with once", "Still think about"],
-    mode: "wild"
-  },
-  {
-    topic: "I didn’t tell you about…",
-    prompts: ["A sexual experience", "A fantasy", "A kink", "Someone I met"],
-    mode: "wild"
-  },
-  {
-    topic: "This one time in bed…",
-    prompts: ["Funny", "Scary", "Awkward", "Weird"],
-    mode: "wild"
-  },
-  {
-    topic: "The dirtiest thing in bed was…",
-    prompts: ["A request", "A phrase", "A position", "A toy"],
-    mode: "wild"
-  },
-  {
-    topic: "I got so turned on when…",
-    prompts: ["They said something", "An old memory", "The position", "Porn fantasy came true"],
-    mode: "wild"
-  },
-  {
-    topic: "Same-sex experience…",
-    prompts: ["Most adventurous", "Fantasized", "Tried once", "Want to try"],
-    mode: "wild"
-  },
-  {
-    topic: "The first blowjob I…",
-    prompts: ["Gave", "Received", "Expected", "Felt"],
-    mode: "wild"
-  },
-  {
-    topic: "Sexting…",
-    prompts: ["Made me cum", "To how many?", "Turned on the most", "Regretted"],
-    mode: "wild"
-  },
-  {
-    topic: "I’ve tried imitating…",
-    prompts: ["A porn", "A book", "A memory", "A partner"],
-    mode: "wild"
-  },
-  {
-    topic: "In a car I…",
-    prompts: ["Wildest position", "Oral happened", "Strangest time", "More than once"],
-    mode: "wild"
-  },
-  {
-    topic: "A story about tits…",
-    prompts: ["Pearl necklace", "Biggest turn on", "Strangest place", "Felt jealous"],
-    mode: "wild"
-  },
-  {
-    topic: "The wildest position…",
-    prompts: ["Tried", "Requested", "Made up", "Regretted"],
-    mode: "wild"
-  },
-  {
-    topic: "Rough sex…",
-    prompts: ["Memorable", "Turn on", "Slap or choke", "Caught me off guard"],
-    mode: "wild"
-  },
-  {
-    topic: "No one has ever known…",
-    prompts: ["One night stand", "A fantasy", "A fetish", "A kink"],
-    mode: "wild"
-  },
-  {
-    topic: "Used a household item to…",
-    prompts: ["Masturbate", "During sex", "Satisfy someone", "Feel curious"],
-    mode: "wild"
-  },
-  {
-    topic: "The morning after pill…",
-    prompts: ["How many times", "Specific event", "Scared me", "Not used when should have"],
-    mode: "wild"
-  },
-  {
-    topic: "Up the ass…",
-    prompts: ["Enjoyed", "Finger only", "Toy", "How many times"],
-    mode: "wild"
-  },
-  {
-    topic: "I secretly like…",
-    prompts: ["Fetish", "Person", "Position", "Toy"],
-    mode: "wild"
-  },
-  {
-    topic: "A kink that I…",
-    prompts: ["Participated in", "Want to try", "Loved", "Was surprised by"],
-    mode: "wild"
-  },
-  {
-    topic: "I was caught…",
-    prompts: ["By parents", "Having sex", "Masturbating", "In public"],
-    mode: "wild"
-  },
-  {
-    topic: "Age is just a number…",
-    prompts: ["Youngest", "Oldest", "Regret", "Made nervous"],
-    mode: "wild"
-  },
-  {
-    topic: "I was dared to…",
-    prompts: ["Flash", "Touch someone", "Kiss someone", "Get naked"],
-    mode: "wild"
-  },
-  {
-    topic: "A perfect stranger…",
-    prompts: ["Had sex with", "Was attracted to", "Gave head", "Met online"],
-    mode: "wild"
-  }
+  // Existing unique topics (41 after removing duplicates)
+  { topic: "The sexiest thing I…", prompts: ["Did", "Wore", "Saw", "Experienced"], mode: "wild" },
+  { topic: "My first passionate kiss was…", prompts: ["Awkward", "Tonsil hockey", "Steamy", "Place"], mode: "wild" },
+  { topic: "When I lost my virginity…", prompts: ["Screamed", "Age", "Enjoyed", "Regret"], mode: "wild" },
+  { topic: "I think I've kissed…", prompts: ["Amount of people", "A friend's partner", "Same sex", "Stranger"], mode: "wild" },
+  { topic: "I've masturbated over…", prompts: ["A friend", "A boss", "Old fling", "Fantasy"], mode: "wild" },
+  { topic: "I was so embarrassed when…", prompts: ["Premature", "Too small", "Fell asleep", "Weird noise"], mode: "wild" },
+  { topic: "An inappropriate crush…", prompts: ["You slept with", "Rejected", "Found irresistible", "Forbidden"], mode: "wild" },
+  { topic: "I gave/received a handjob…", prompts: ["Strangest place", "While driving", "Random person", "Teenage years"], mode: "wild" },
+  { topic: "This one time in a cinema…", prompts: ["Fingered", "Popcorn trick", "Made out", "Caught"], mode: "wild" },
+  { topic: "The shower…", prompts: ["Exciting", "Best experience", "Slippery mishap", "Golden moment"], mode: "wild" },
+  { topic: "Flashing in public…", prompts: ["How many times", "Where", "Who saw", "Funniest reaction"], mode: "wild" },
+  { topic: "A threesome…", prompts: ["Experienced", "Fantasized", "Want to try", "MMF or FFM"], mode: "wild" },
+  { topic: "An orgasm I…", prompts: ["Screamed", "Can't forget", "Squirted", "Massive load"], mode: "wild" },
+  { topic: "A porno I…", prompts: ["Created", "Watched with someone", "Copied", "Favourite category"], mode: "wild" },
+  { topic: "The worst sex was…", prompts: ["Boring", "Too rough", "No chemistry", "Never came"], mode: "wild" },
+  { topic: "There was one friend I…", prompts: ["Had a close call", "Fell for", "Slept with once", "Still think about"], mode: "wild" },
+  { topic: "I didn’t tell you about…", prompts: ["A sexual experience", "A fantasy", "A kink", "Someone I met"], mode: "wild" },
+  { topic: "This one time in bed…", prompts: ["Funny", "Scary", "Awkward", "Weird"], mode: "wild" },
+  { topic: "The dirtiest thing in bed was…", prompts: ["A request", "A phrase", "A position", "A toy"], mode: "wild" },
+  { topic: "I got so turned on when…", prompts: ["They said something", "An old memory", "The position", "Porn fantasy came true"], mode: "wild" },
+  { topic: "Same-sex experience…", prompts: ["Most adventurous", "Fantasized", "Tried once", "Want to try"], mode: "wild" },
+  { topic: "The first blowjob I…", prompts: ["Gave", "Received", "Expected", "Felt"], mode: "wild" },
+  { topic: "Sexting…", prompts: ["Made me cum", "To how many?", "Turned on the most", "Regretted"], mode: "wild" },
+  { topic: "I’ve tried imitating…", prompts: ["A porn", "A book", "A memory", "A partner"], mode: "wild" },
+  { topic: "In a car I…", prompts: ["Wildest position", "Oral happened", "Strangest time", "More than once"], mode: "wild" },
+  { topic: "A story about tits…", prompts: ["Pearl necklace", "Biggest turn on", "Strangest place", "Felt jealous"], mode: "wild" },
+  { topic: "The wildest position…", prompts: ["Tried", "Requested", "Made up", "Regretted"], mode: "wild" },
+  { topic: "Rough sex…", prompts: ["Memorable", "Turn on", "Slap or choke", "Caught me off guard"], mode: "wild" },
+  { topic: "No one has ever known…", prompts: ["One night stand", "A fantasy", "A fetish", "A kink"], mode: "wild" },
+  { topic: "Used a household item to…", prompts: ["Masturbate", "During sex", "Satisfy someone", "Feel curious"], mode: "wild" },
+  { topic: "The morning after pill…", prompts: ["How many times", "Specific event", "Scared me", "Not used when should have"], mode: "wild" },
+  { topic: "Up the ass…", prompts: ["Enjoyed", "Finger only", "Toy", "How many times"], mode: "wild" },
+  { topic: "I secretly like…", prompts: ["Fetish", "Person", "Position", "Toy"], mode: "wild" },
+  { topic: "A kink that I…", prompts: ["Participated in", "Want to try", "Loved", "Was surprised by"], mode: "wild" },
+  { topic: "I was caught…", prompts: ["By parents", "Having sex", "Masturbating", "In public"], mode: "wild" },
+  { topic: "Age is just a number…", prompts: ["Youngest", "Oldest", "Regret", "Made nervous"], mode: "wild" },
+  { topic: "I was dared to…", prompts: ["Flash", "Touch someone", "Kiss someone", "Get naked"], mode: "wild" },
+  { topic: "A perfect stranger…", prompts: ["Had sex with", "Was attracted to", "Gave head", "Met online"], mode: "wild" },
+  { topic: "The most terrible…", prompts: ["Sex", "Position", "Partner", "Oral experience"], mode: "wild" },
+  { topic: "The first person to ever…", prompts: ["Give me oral", "Make me squirt", "Use toys", "Try anal"], mode: "wild" },
+  { topic: "I told a lie…", prompts: ["In bed", "About an orgasm", "To a lover", "To protect someone"], mode: "wild" },
+  // New unique topics (59 to reach 100)
+  { topic: "A roleplay I…", prompts: ["Tried", "Fantasized", "Found hot", "Failed at"], mode: "wild" },
+  { topic: "In a hot tub…", prompts: ["Hooked up", "Got caught", "Best moment", "Weirdest thing"], mode: "wild" },
+  { topic: "My favorite sex toy…", prompts: ["First time", "Best feature", "Bought for", "Hid from"], mode: "wild" },
+  { topic: "I got aroused in…", prompts: ["Public place", "Classroom", "Workplace", "Wrong time"], mode: "wild" },
+  { topic: "A strip tease I…", prompts: ["Gave", "Received", "Messed up", "Loved watching"], mode: "wild" },
+  { topic: "The best foreplay was…", prompts: ["Unexpected", "Longest", "Most intense", "With a stranger"], mode: "wild" },
+  { topic: "I tried bondage…", prompts: ["With ropes", "Handcuffs", "Blindfold", "Regretted"], mode: "wild" },
+  { topic: "A sexy outfit I…", prompts: ["Wore", "Bought", "Tore off", "Got compliments"], mode: "wild" },
+  { topic: "In a hotel room…", prompts: ["Wildest night", "Room service", "Got loud", "Broke something"], mode: "wild" },
+  { topic: "I fantasized about…", prompts: ["Celebrity", "Teacher", "Neighbor", "Fictional character"], mode: "wild" },
+  { topic: "The best oral I…", prompts: ["Gave", "Received", "In public", "Surprised me"], mode: "wild" },
+  { topic: "A secret hookup…", prompts: ["At a party", "With a coworker", "On vacation", "Never told"], mode: "wild" },
+  { topic: "I used a dating app to…", prompts: ["Hook up", "Flirt", "Meet someone", "Get rejected"], mode: "wild" },
+  { topic: "The most awkward moment…", prompts: ["During sex", "On a date", "While flirting", "Got caught"], mode: "wild" },
+  { topic: "A sex game I…", prompts: ["Played", "Made up", "Won", "Lost"], mode: "wild" },
+  { topic: "I got turned on by…", prompts: ["A voice", "A touch", "A smell", "A look"], mode: "wild" },
+  { topic: "In a public restroom…", prompts: ["Hooked up", "Got caught", "Riskiest moment", "Weirdest thing"], mode: "wild" },
+  { topic: "A sexy massage…", prompts: ["Gave", "Received", "Turned into more", "At a spa"], mode: "wild" },
+  { topic: "I tried a new position…", prompts: ["Loved", "Hated", "Failed at", "Inspired by"], mode: "wild" },
+  { topic: "The hottest text I…", prompts: ["Sent", "Received", "Regretted", "Saved"], mode: "wild" },
+  { topic: "A skinny dipping experience…", prompts: ["With friends", "Strangers", "Got caught", "Best location"], mode: "wild" },
+  { topic: "I watched someone…", prompts: ["Hook up", "Undress", "In secret", "By accident"], mode: "wild" },
+  { topic: "The best party I…", prompts: ["Hooked up at", "Got wild at", "Kissed someone", "Regretted"], mode: "wild" },
+  { topic: "A sexy dream I…", prompts: ["Had", "Told someone", "Acted out", "Can’t forget"], mode: "wild" },
+  { topic: "I flirted with…", prompts: ["A stranger", "A friend’s crush", "A bartender", "Online"], mode: "wild" },
+  { topic: "The riskiest place I…", prompts: ["Had sex", "Made out", "Got caught", "Fantasized"], mode: "wild" },
+  { topic: "A blind date…", prompts: ["Turned hot", "Went wrong", "Surprised me", "Never again"], mode: "wild" },
+  { topic: "I used a mirror to…", prompts: ["Watch myself", "During sex", "Try something new", "Get turned on"], mode: "wild" },
+  { topic: "The hottest accent I…", prompts: ["Heard", "Fell for", "Tried to imitate", "Got turned on by"], mode: "wild" },
+  { topic: "I got caught staring at…", prompts: ["Someone’s body", "In public", "By a partner", "Awkwardly"], mode: "wild" },
+  { topic: "A sexy bet I…", prompts: ["Made", "Won", "Lost", "Regretted"], mode: "wild" },
+  { topic: "I tried phone sex…", prompts: ["With a partner", "Stranger", "Loved it", "Failed"], mode: "wild" },
+  { topic: "The best makeout session…", prompts: ["Location", "Partner", "Unexpected", "Memorable"], mode: "wild" },
+  { topic: "I got turned on at…", prompts: ["A concert", "A movie", "A club", "A boring event"], mode: "wild" },
+  { topic: "A costume I…", prompts: ["Wore for sex", "Found hot", "Bought", "Made"], mode: "wild" },
+  { topic: "I sent a nude…", prompts: ["By mistake", "To a crush", "Regretted", "Got a reply"], mode: "wild" },
+  { topic: "The hottest dance I…", prompts: ["Did", "Saw", "With a stranger", "At a club"], mode: "wild" },
+  { topic: "I tried a sex challenge…", prompts: ["With a partner", "From online", "Failed", "Loved"], mode: "wild" },
+  { topic: "A secret crush I…", prompts: ["Told", "Kissed", "Hid from", "Still have"], mode: "wild" },
+  { topic: "I hooked up at…", prompts: ["A wedding", "A festival", "A bar", "A friend’s house"], mode: "wild" },
+  { topic: "The best dirty talk…", prompts: ["I said", "I heard", "Surprised me", "Turned me on"], mode: "wild" },
+  { topic: "I used food during…", prompts: ["Sex", "Foreplay", "A date", "A fantasy"], mode: "wild" },
+  { topic: "A public display I…", prompts: ["Got caught", "Tried", "Felt shy", "Loved"], mode: "wild" },
+  { topic: "I tried a sex tape…", prompts: ["Made one", "Watched mine", "Deleted", "Shared"], mode: "wild" },
+  { topic: "The hottest vacation…", prompts: ["Hookup", "Location", "Partner", "Memory"], mode: "wild" },
+  { topic: "I got frisky at…", prompts: ["A beach", "A park", "A club", "A friend’s place"], mode: "wild" },
+  { topic: "A sexy gift I…", prompts: ["Gave", "Received", "Bought", "Hid"], mode: "wild" },
+  { topic: "I tried tantric sex…", prompts: ["Loved", "Failed", "With a partner", "Learned"], mode: "wild" },
+  { topic: "The hottest eye contact…", prompts: ["During sex", "With a stranger", "Turned me on", "Awkward"], mode: "wild" },
+  { topic: "I got aroused by music…", prompts: ["Song", "Concert", "While dancing", "Unexpectedly"], mode: "wild" },
+  { topic: "A sexy dare I…", prompts: ["Accepted", "Gave", "Regretted", "Loved"], mode: "wild" },
+  { topic: "I hooked up with…", prompts: ["A friend’s ex", "A coworker", "A neighbor", "A stranger"], mode: "wild" },
+  { topic: "The best after-sex moment…", prompts: ["Cuddle", "Talk", "Laugh", "Food"], mode: "wild" },
+  { topic: "I tried a sex class…", prompts: ["Online", "In person", "Learned", "Taught"], mode: "wild" },
+  { topic: "A sexy tattoo I…", prompts: ["Got", "Saw", "Touched", "Hid"], mode: "wild" },
+  { topic: "I got turned on by a…", prompts: ["Uniform", "Scent", "Voice", "Gesture"], mode: "wild" },
+  { topic: "The hottest role reversal…", prompts: ["Tried", "Fantasized", "Loved", "Surprised me"], mode: "wild" },
+  { topic: "I tried a sex party…", prompts: ["Went to", "Fantasized", "Got invited", "Left early"], mode: "wild" },
+  { topic: "The best quickie…", prompts: ["Location", "Partner", "Unexpected", "Memorable"], mode: "wild" }
 ];
+
+export default promptData;
 
 function Timer({ resetTrigger }) {
   const [secondsLeft, setSecondsLeft] = useState(120);
