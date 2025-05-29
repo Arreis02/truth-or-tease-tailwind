@@ -1,0 +1,16 @@
+import promptData from '../prompts.jsx';
+
+const Debug = () => {
+  return (
+    <div className="p-4 text-white bg-black">
+      <h1 className="text-2xl font-bold">Total Topics: {promptData.length}</h1>
+      <ul>
+        {promptData.map((item, index) => (
+          <li key={index}>{item.topic}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Debug;
