@@ -1,1 +1,38 @@
+import { Link } from 'react-router-dom';
 
+const Rules = () => {
+  return (
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-4 py-8">
+      <h1 className="text-4xl font-bold text-pink-500 drop-shadow-md mb-4">Truth or Tease: Rules</h1>
+      <p className="text-lg italic text-gray-300 mb-6 max-w-2xl text-center">
+        Get ready for a naughty night of secrets and seduction with your partner!
+      </p>
+      <div className="max-w-2xl text-left space-y-4">
+        <h2 className="text-2xl font-semibold text-pink-400">What’s This Game About?</h2>
+        <p className="text-gray-200">
+          Truth or Tease is an adult game for couples to explore their deepest sexual desires, fantasies, and past experiences. In “Wild” mode, 150 spicy prompts dig into your sexual history with no judgment—just pure, playful fun. Perfect for a high, open-hearted night!
+        </p>
+        <h2 className="text-2xl font-semibold text-pink-400">How to Play</h2>
+        <ul className="list-disc list-inside text-gray-200 space-y-2">
+          <li><strong>Start the Game</strong>: From the intro page, click “Play Now” to enter “Wild” mode with 150 dirty, psychological prompts.</li>
+          <li><strong>Read the Prompt</strong>: Each prompt (e.g., “The dirtiest sexual encounter I had was…”) comes with four options (e.g., “In a forbidden place”). Choose one or answer freely!</li>
+          <li><strong>Truth or Lie</strong>: Decide if you’ll answer honestly (Truth) or make up a steamy story (Lie). Press the button to declare your choice, then share your answer.</li>
+          <li><strong>Mind the Timer</strong>: You’ve got 2 minutes (top-right corner) to answer before the screen flashes. Take your time or rush for fun!</li>
+          <li><strong>Next or Back</strong>: Click “Next” for a new prompt or “Back” to revisit the last one. Keep going as long as the mood strikes!</li>
+        </ul>
+        <h2 className="text-2xl font-semibold text-pink-400">Tips for Maximum Fun</h2>
+        <ul className="list-disc list-inside text-gray-200 space-y-2">
+          <li>Play in a safe, cozy space where you both feel free to share.</li>
+          <li>Mix Truth and Lie to keep things unpredictable and playful.</li>
+          <li>Embrace the naughty vibe—no shame, just pleasure!</li>
+          <li>If a prompt feels too intense, hit “Next” for another.</li>
+        </ul>
+        <Link to="/" className="inline-block mt-6 px-6 py-3 bg-black text-pink-500 font-bold border border-pink-500 rounded-full hover:bg-pink-500 hover:text-black">
+          Back to Intro
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default Rules;
