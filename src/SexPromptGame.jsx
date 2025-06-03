@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from 'react-router-dom';
 import { wildPromptData } from "./prompts.jsx";
 
 function Timer({ resetTrigger }) {
@@ -38,7 +39,6 @@ function Timer({ resetTrigger }) {
 }
 
 export default function SexPromptGame() {
-  const [screen, setScreen] = useState("menu");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [resetTrigger, setResetTrigger] = useState(0);
   const [currentPrompts, setCurrentPrompts] = useState(wildPromptData);
@@ -47,54 +47,34 @@ export default function SexPromptGame() {
     console.log(`Total Wild prompts: ${currentPrompts.length}`);
   }, [currentPrompts]);
 
-  const selectMode = () => {
-    setScreen("game");
-    setCurrentPrompts(wildPromptData); // Always use Wild prompts
-    setCurrentIndex(0);
-    setResetTrigger((prev) => prev + 1);
-  };
-
   const currentPrompt = currentPrompts[currentIndex % currentPrompts.length] || { topic: "", prompts: [] };
 
   return (
-    screen === "menu" ? (
-      <div className="relative flex flex-col items-center justify-center min-h-screen text-white bg-black">
-        <div className="z-10 flex flex-col items-center">
-          <h1 className="text-4xl font-bold text-pink-500 drop-shadow-md mb-2">Truth or Tease</h1>
-          <p className="italic text-white text-lg mb-6">A Game of Seduction, Subversion, and Secrets</p>
-          <div className="space-y-3">
-            <button className="w-48 bg-black text-pink-500 font-bold border border-pink-500 shadow-md" onClick={selectMode}>Playful</button>
-            <button className="w-48 bg-black text-pink-500 font-bold border border-pink-500 shadow-md" onClick={selectMode}>Wild</button>
-            <button className="w-48 bg-black text-pink-500 font-bold border border-pink-500 shadow-md" onClick={selectMode}>Mixed</button>
-          </div>
-        </div>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white px-4 text-center relative">
+      <h2 className="text-3xl font-bold text-pink-400 mb-4 animate-pulse">{currentPrompt.topic}</h2>
+      <motion.div className="space-y-2 mb-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
+        {currentPrompt.prompts.map((p, i) => (
+          <div key={i} className="text-lg font-semibold">{p}</div>
+        ))}
+      </motion.div>
+      <div className="flex space-x-6 mb-6">
+        <button className="text-lg font-bold px-6 py-3 bg-black text-white border-white border rounded-full hover:bg-white hover:text-black">Truth</button>
+        <button className="text-lg font-bold px-6 py-3 bg-black text-white border-white border rounded-full hover:bg-white hover:text-black">Lie</button>
       </div>
-    ) : (
-      <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white px-4 text-center relative">
-        <h2 className="text-3xl font-bold text-pink-400 mb-4 animate-pulse">{currentPrompt.topic}</h2>
-        <motion.div className="space-y-2 mb-6" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}>
-          {currentPrompt.prompts.map((p, i) => (
-            <div key={i} className="text-lg font-semibold">{p}</div>
-          ))}
-        </motion.div>
-        <div className="flex space-x-6 mb-6">
-          <button className="text-lg font-bold px-6 py-3 bg-black text-white border-white border rounded-full hover:bg-white hover:text-black">Truth</button>
-          <button className="text-lg font-bold px-6 py-3 bg-black text-white border-white border rounded-full hover:bg-white hover:text-black">Lie</button>
-        </div>
-        <div className="flex space-x-4 mb-8">
-          <button onClick={() => {
-            setCurrentIndex((currentIndex - 1 + currentPrompts.length) % currentPrompts.length);
-            setResetTrigger(prev => prev + 1);
-          }} className="px-4 py-2 text-white border border-white rounded-full">Back</button>
-          <button onClick={() => {
-            setCurrentIndex((currentIndex + 1) % currentPrompts.length);
-            setResetTrigger(prev => prev + 1);
-          }} className="px-4 py-2 text-white border border-white rounded-full">Next</button>
-        </div>
-        <div className="absolute top-6 right-6 w-16 h-16 rounded-full border-4 border-white flex items-center justify-center text-lg font-bold">
-          <Timer resetTrigger={resetTrigger} />
-        </div>
+      <div className="flex space-x-4 mb-8">
+        <button onClick={() => {
+          setCurrentIndex((currentIndex - 1 + currentPrompts.length) % currentPrompts.length);
+          setResetTrigger(prev => prev + 1);
+        }} className="px-4 py-2 text-white border border-white rounded-full">Back</button>
+        <button onClick={() => {
+          setCurrentIndex((currentIndex + 1) % currentPrompts.length);
+          setResetTrigger(prev => prev + 1);
+        }} className="px-4 py-2 text-white border border-white rounded-full">Next</button>
       </div>
-    )
+      <Link to="/" className="px-4 py-2 text-pink-500 border border-pink-500 rounded-full hover:bg-pink-500 hover:text-black">Back to Intro</Link>
+      <div className="absolute top-6 right-6 w-16 h-16 rounded-full border-4 border-white flex items-center justify-center text-lg font-bold">
+        <Timer resetTrigger={resetTrigger} />
+      </div>
+    </div>
   );
 }
