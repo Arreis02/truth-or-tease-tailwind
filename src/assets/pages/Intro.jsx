@@ -1,4 +1,5 @@
-import gamecoverImage from '../assets/gamecover.png';
+import gamecoverImage from  src/pages/index.tsx
+
 
 const Intro = () => {
   return (
