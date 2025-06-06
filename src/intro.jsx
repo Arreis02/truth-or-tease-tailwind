@@ -7,6 +7,8 @@ const Intro = () => {
       <img src={gamecoverImage} alt="Truth or Tease Intro" className="max-w-full h-auto max-h-[80vh] mb-6" />
       <h1 className="text-4xl font-bold text-pink-500 drop-shadow-md text-center">Truth or Tease</h1>
     </div>
+    <img src={logo} alt="My Logo" />
+
   );
 };
 
