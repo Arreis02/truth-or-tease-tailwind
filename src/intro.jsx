@@ -1,4 +1,5 @@
-import gamecoverImage from '../../assets/gamecover.png';
+import logo from '../assets/logo.png';
+
 
 const Intro = () => {
   return (
